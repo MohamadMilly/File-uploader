@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
     <title>Memo Drive - Sign up</title>
   </head>
   <body>
@@ -19,13 +23,17 @@
       <label for="confirm_password">Confirm Password</label>
       <input type="password" name="confirm_password" id="confirm_password" />
       <button type="submit">Sign up</button>
+      <p>Already have an account ? <span><a class="login-link" href="/auth/login">Login</a></span></p>
     </form>
     <div>
-      <ul>
-      <% locals.errors &&  locals.errors.forEach(error => { %>
-        <li> <%= error.msg %></li>
+      <% if(locals.errors) { %>
+         <ul class="errors">
+      <% locals.errors.forEach(error => { %>
+        <li class="error"> <%= error.msg %></li>
       <% }) %> 
       </ul>
+      <% } %>
+      
     </div>
   </body>
 </html>

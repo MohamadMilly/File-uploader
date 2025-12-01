@@ -10,3 +10,4 @@ CREATE TABLE "Session" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Session_sid_key" ON "Session"("sid");
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/crud.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Memo Drive - Update Folder</title>
+  </head>
+  <body>
+    <h1 class="updatefolder-section-title">Edit <%= folder.name %> Folder</h1>
+    <form
+      class="updatefolder-form"
+      action="/dashboard/update/folder/<%= folder.id %>"
+      method="post"
+    >
+      <label for="name">New Name:</label>
+      <input
+        type="text"
+        required
+        name="name"
+        id="name"
+        value="<%= folder.name %>"
+      />
+      <button type="submit">Apply changes</button>
+    </form>
+  </body>
+</html>

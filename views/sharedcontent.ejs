@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/sharedcontent.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
+    <title>Memo Drive - Shared Content</title>
+</head>
+<body>
+    
+<div class="sharedContent-container">
+  <h1 class="sharedcontent-section-title">Shared Folder: <%= folder.name %></h1>
+    <% if(folder.files.length != 0) { %>
+      <% folder.files.forEach(file => { %>
+      <div class="sharedfile-info">
+       <p class="sharedfile-name"><strong><%= file.name %></strong></p>
+       <p class="sharedfile-date"><%= file.createdAt %></p>
+       <p class="sharedfile-folder">In Folder : <%= folder.name %></p>
+       <p class="sharedfile-size">Size: <%= file.size ? formatBytes(file.size) : 'Unknown' %> </p>
+       <a class="sharedfile-download-link" href="<%= file.URL %>" download id="download_link"
+          >Download</a
+        >
+      </div>
+     <% }) %>
+    <% } else { %>
+     <p>no files in this folder ! </p>
+    <% } %>
+</div>
+</body>
+</html>

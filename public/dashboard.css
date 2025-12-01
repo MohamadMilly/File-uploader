@@ -1,0 +1,264 @@
+html {
+  height: 100%;
+  --aside-border-color: rgba(134, 134, 240, 0.568);
+  --aside-background-color: rgba(228, 218, 218, 0.332);
+  --logo-container-background: rgba(134, 134, 240, 0.568);
+  --aside-links-background: rgba(174, 174, 245, 0.568);
+  --aside-links-background-hover: rgba(174, 174, 245, 0.415);
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  font-family: "Google Sans Flex", sans-serif;
+}
+
+* {
+  margin: 0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  flex: 1;
+}
+aside {
+  grid-column: 1/2;
+  background-color: var(--aside-background-color);
+  flex: 1;
+  border-right: 5px solid var(--aside-border-color);
+  backdrop-filter: blue(10px);
+}
+
+aside > div > a {
+  display: block;
+}
+
+section {
+  grid-column: 2/3;
+  height: 100%;
+  padding: 32px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--logo-container-background);
+  margin: 0;
+}
+
+aside > div:not(:first-of-type) {
+  padding: 32px 12px;
+}
+
+aside > div > h3 {
+  color: rgb(46, 46, 46);
+  margin-bottom: 12px;
+}
+.sections-links-container > a,
+.addnew-links-container > a {
+  padding: 5px 5px 5px 12px;
+  text-decoration: none;
+  background-color: var(--aside-links-background);
+  border-radius: 5px;
+  margin: 5px 0px;
+  font-size: 14px;
+  color: rgb(50, 50, 50);
+}
+
+.sections-links-container > a:hover,
+.addnew-links-container > a:hover {
+  background-color: var(--aside-links-background-hover);
+}
+
+.files-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.files-section-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: rgb(46, 46, 46);
+  border-bottom: 3px solid var(--aside-border-color);
+  padding-bottom: 8px;
+}
+
+.file-info-container {
+  background-color: rgba(228, 218, 218, 0.2);
+  border: 2px solid var(--aside-border-color);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.file-info-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.file-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgb(46, 46, 46);
+}
+
+.file-date,
+.file-folder,
+.file-size {
+  font-size: 14px;
+  margin: 4px 0;
+  color: rgb(70, 70, 70);
+}
+
+.file-links {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.file-links a {
+  padding: 6px 12px;
+  text-decoration: none;
+  background-color: var(--aside-links-background);
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(50, 50, 50);
+  transition: background-color 0.2s ease;
+}
+
+.file-links a:hover {
+  background-color: var(--aside-links-background-hover);
+}
+
+.files-container > p {
+  font-size: 16px;
+  margin: 12px 0;
+  color: rgb(70, 70, 70);
+}
+
+.files-container > a {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  background-color: var(--aside-links-background);
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(50, 50, 50);
+}
+
+.files-container > a:hover {
+  background-color: var(--aside-links-background-hover);
+}
+
+.folders-section-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.folders-section-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: rgb(46, 46, 46);
+  border-bottom: 3px solid var(--aside-border-color);
+  padding-bottom: 8px;
+}
+
+/* Folder card styling */
+.folder-info-container {
+  background-color: rgba(255, 230, 150, 0.4); /* warm folder-like tone */
+  border: 2px solid rgba(255, 200, 80, 0.8);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* little folder tab effect */
+.folder-info-container::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  width: 60px;
+  height: 15px;
+  background-color: rgba(255, 200, 80, 0.9);
+  border: 2px solid rgba(255, 200, 80, 0.8);
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+}
+
+.folder-info-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.folder-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgb(46, 46, 46);
+}
+
+.folder-date {
+  font-size: 14px;
+  margin: 4px 0;
+  color: rgb(70, 70, 70);
+}
+
+/* Links inside folders */
+.folder-links-container {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.folder-links-container a {
+  padding: 6px 12px;
+  text-decoration: none;
+  background-color: var(--aside-links-background);
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(50, 50, 50);
+  transition: background-color 0.2s ease;
+}
+
+.folder-links-container a:hover {
+  background-color: var(--aside-links-background-hover);
+}
+
+/* Empty state */
+.folders-section-container > p {
+  font-size: 16px;
+  margin: 12px 0;
+  color: rgb(70, 70, 70);
+}
+
+.folders-section-container > a {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  text-decoration: none;
+  background-color: var(--aside-links-background);
+  border-radius: 5px;
+  font-size: 14px;
+  color: rgb(50, 50, 50);
+}
+
+.folders-section-container > a:hover {
+  background-color: var(--aside-links-background-hover);
+}

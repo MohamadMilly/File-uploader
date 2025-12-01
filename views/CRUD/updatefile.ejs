@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/crud.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Memo Drive - Update File</title>
+  </head>
+  <body>
+    <h1 class="updatefile-section-title">Edit File : <%= file.name %></h1>
+    <form class="updatefile-form" action="/dashboard/update/file/<%= file.id %>" method="POST">
+      <label for="name">File name:</label>
+      <input type="text" name="name" id="name" required value="<%= file.name %>" />
+      <label for="folder">Folder:</label>
+      <select name="folderId" id="folder">
+        <% locals.folders && folders.forEach(folder => { %>
+        <option <%= file.folder.id === folder.id ? 'selected' : '' %> value="<%= folder.id %>"><%= folder.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Apply Changes</button>
+    </form>
+  </body>
+</html>

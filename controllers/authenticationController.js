@@ -11,14 +11,14 @@ const { validationResult, matchedData } = require("express-validator");
 
 // rendering the signup form
 const signupGet = (req, res) => {
-  res.render("signup");
+  res.render("auth/signup");
 };
 
 // getting the data from the sign up form
 const signupPost = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.render("signup", { errors: errors.array() });
+    return res.render("auth/signup", { errors: errors.array() });
   }
   const { firstname, lastname, username, password } = matchedData(req);
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -40,11 +40,16 @@ const signupPost = async (req, res, next) => {
 // rendering the login form
 const loginGet = (req, res) => {
   const errors = req.flash("error"); // getting the error message from the strategy
-  res.render("login", { errors: errors });
+  res.render("auth/login", { errors: errors });
+};
+
+const notAuthenticatedGet = (req, res) => {
+  res.render("/auth/notAuthenticated");
 };
 
 module.exports = {
   signupGet,
   signupPost,
   loginGet,
+  notAuthenticatedGet,
 };

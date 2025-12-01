@@ -1,0 +1,84 @@
+html {
+  height: 100%;
+  --title-color: rgb(46, 46, 220);
+  --card-border-color: rgb(174, 167, 167);
+  --card-background: rgba(228, 218, 218, 0.25);
+  --download-button-color: rgb(46, 46, 220);
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  font-family: "Google Sans Flex", sans-serif;
+  color: rgb(42, 42, 42);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    to bottom right,
+    rgba(134, 134, 240, 0.1),
+    rgba(228, 218, 218, 0.2)
+  );
+  padding: 32px;
+}
+
+.filedetails-section-title {
+  color: var(--title-color);
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 32px;
+}
+
+.content-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.file-info-container {
+  background-color: var(--card-background);
+  border: 2px solid var(--card-border-color);
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.file-info-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.file-name {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: rgb(46, 46, 46);
+}
+
+.file-size,
+.file-folder,
+.file-date {
+  font-size: 15px;
+  margin: 6px 0;
+  color: rgb(70, 70, 70);
+}
+
+.file-download-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: var(--download-button-color);
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.file-download-link:hover {
+  background-color: rgb(30, 30, 180);
+}

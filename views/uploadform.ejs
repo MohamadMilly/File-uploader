@@ -3,14 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/uploadform.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
     <title>Memo Drive - Upload</title>
   </head>
   <body>
-    <h1>Upload A File</h1>
-    <form action="/upload" method="POST">
+    <h1 class="uploadfile-section-title">Upload A File</h1>
+    <form onsubmit="showUploadIndicator()" class="uploadfile-form" action="/dashboard/upload" method="POST" enctype="multipart/form-data">
+      <label for="name">File name:</label>
+      <input type="text" name="name" id="name" required />
       <label for="file">Upload your file here:</label>
       <input type="file" name="file" id="file" required />
+      <label for="folder">Folder:</label>
+      <select name="folderId" id="folder">
+        <% locals.user.folders && user.folders.forEach(folder => { %>
+        <option value="<%= folder.id %>"><%= folder.name %></option>
+        <% }) %>
+      </select>
       <button type="submit">Upload</button>
     </form>
+    <script>
+      function showUploadIndicator() {
+        const Uploadingindictor = document.createElement("div");
+        Uploadingindictor.classList.add("uploading-indicator");
+        const body = document.querySelector("body");
+        Uploadingindictor.textContent = "Uploading...";
+        body.appendChild(Uploadingindictor);
+      }
+     </script>
   </body>
 </html>

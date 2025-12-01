@@ -1,0 +1,20 @@
+<div class="folders-section-container">
+    <h1 class="folders-section-title">All Folders</h1>
+    <% if(locals.folders.length != 0) { %>
+      <% folders.forEach(folder => { %>
+      <div class="folder-info-container">
+       <p class="folder-name"><strong><%= folder.name %></strong></p>
+       <p class="folder-date"><%= folder.createdAt %></p>
+       <div class="folder-links-container">
+         <a href="/dashboard/folders/<%= folder.id %>">View all files in this folder</a>
+         <a href="/dashboard/delete/folder/<%= folder.id %>">Delete</a>
+         <a href="/dashboard/update/folder/<%= folder.id %>">Update</a>
+         <a href="/dashboard/share/<%= folder.id %>">Share</a>
+       </div>
+      </div>
+     <% }) %>
+    <% } else { %>
+     <p>no folders exist yet ! </p>
+     <a href="/dashboard/newFolder">create new folder!</a>
+    <% } %>
+</div>

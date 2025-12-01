@@ -1,0 +1,101 @@
+html {
+  height: 100%;
+  --title-color: rgb(46, 46, 220);
+  --submit-button-color: rgb(46, 46, 220);
+  --login-link-color: rgb(82, 116, 14);
+  --input-border-color: rgb(174, 167, 167);
+  --errors-background: rgba(230, 85, 85, 0.486);
+  --error-color: rgb(223, 25, 25);
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 24px;
+  min-height: 100dvh;
+  font-family: "Google Sans Flex", sans-serif;
+  color: rgb(42, 42, 42);
+}
+
+h1 {
+  color: var(--title-color);
+  text-align: center;
+  margin: 32px 0px;
+}
+
+form {
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+}
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 6px 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid rgb(174, 167, 167);
+  outline: none;
+}
+
+input:focus {
+  border: 2px solid var(--title-color);
+}
+
+button[type="submit"] {
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: 2px solid var(--submit-button-color);
+  border-bottom: 5px solid var(--submit-button-color);
+  background-color: white;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--submit-button-color);
+  color: white;
+}
+
+.login-link {
+  color: var(--login-link-color);
+  text-decoration: none;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.errors {
+  max-width: 350px;
+  margin: 0 auto;
+  animation: slidein 0.5s ease-in-out 1;
+  transform-origin: top;
+  animation-fill-mode: forwards;
+  background-color: var(--errors-background);
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+@keyframes slidein {
+  from {
+    transform: scaleY(0);
+  }
+  70% {
+    transform: scaleY(1.1);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.error {
+  list-style-type: none;
+  color: var(--error-color);
+  margin: 5px 0px;
+}

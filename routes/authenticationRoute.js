@@ -11,6 +11,7 @@ const validateSigup = require("../middlewares/signupValidator");
 // get routes
 authRouter.get("/signup", authController.signupGet);
 authRouter.get("/login", authController.loginGet);
+authRouter.get("/notAuthenticated", authController.notAuthenticatedGet);
 
 // post routes
 authRouter.post("/signup", validateSigup, authController.signupPost);
@@ -19,7 +20,7 @@ authRouter.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/auth/login",
-    failureFlash: true, // allowing flashs
+    failureFlash: true, // allowing flashs for strategyErrors
   })
 );
 

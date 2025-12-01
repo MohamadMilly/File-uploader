@@ -1,0 +1,111 @@
+html {
+  height: 100%;
+  --title-color: rgb(46, 46, 220);
+  --input-border-color: rgb(174, 167, 167);
+  --submit-button-color: rgb(46, 46, 220);
+  --card-border-color: rgb(174, 167, 167);
+  --card-background: rgba(228, 218, 218, 0.25);
+  --download-button-color: rgb(46, 46, 220);
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  font-family: "Google Sans Flex", sans-serif;
+  color: rgb(42, 42, 42);
+  padding: 32px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(134, 134, 240, 0.1),
+    rgba(228, 218, 218, 0.2)
+  );
+}
+
+.sharedContent-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sharedcontent-section-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: var(--title-color);
+  border-bottom: 3px solid var(--card-border-color);
+  padding-bottom: 8px;
+  position: relative;
+}
+
+/* Shared file card */
+.sharedfile-info {
+  background-color: var(--card-background);
+  border: 2px solid var(--card-border-color);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  position: relative;
+}
+
+.sharedfile-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Shared badge */
+.sharedfile-info::before {
+  content: "Shared";
+  position: absolute;
+  top: -12px;
+  right: 16px;
+  background-color: var(--title-color);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sharedfile-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgb(46, 46, 46);
+}
+
+.sharedfile-date,
+.sharedfile-folder,
+.sharedfile-size {
+  font-size: 14px;
+  margin: 4px 0;
+  color: rgb(70, 70, 70);
+}
+
+/* Download button */
+.sharedfile-download-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  text-decoration: none;
+  background-color: var(--download-button-color);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.sharedfile-download-link:hover {
+  background-color: rgb(30, 30, 180);
+}
+
+/* Empty state */
+.sharedContent-container > p {
+  font-size: 16px;
+  margin: 12px 0;
+  color: rgb(70, 70, 70);
+}

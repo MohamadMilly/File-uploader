@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/landing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
+    <title>Memo Drive - Get Started</title>
+  </head>
+  <body>
+    <div class="gradient-background"></div>
+    <%- include("partials/header")%>
+    <main>
+      <h2 class="main-title">Welcome to Memo Drive !</h2>
+      <p class="description">Upload your files securely and save memory !</p>
+      <div class="main-links-container">
+        <% if(locals.user) { %>
+           <a href="/dashboard">Go to dashboard</a>
+        <a href="/dashboard/upload">Upload new file</a>
+        <% } else { %>
+         <a href="/auth/signup">Sign up</a>
+         <a href="/auth/login">Log in</a>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

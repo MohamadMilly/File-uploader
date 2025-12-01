@@ -23,6 +23,7 @@ const bcrypt = require("bcryptjs");
 // requiring the routers
 const authRouter = require("./routes/authenticationRoute");
 const indexRouter = require("./routes/indexRoute");
+const dashboardRouter = require("./routes/dashboardRoute");
 
 const app = express();
 
@@ -89,6 +90,7 @@ passport.deserializeUser(async (userId, done) => {
 
 app.use("/auth", authRouter);
 app.use("/", indexRouter);
+app.use("/dashboard", dashboardRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, (error) => {

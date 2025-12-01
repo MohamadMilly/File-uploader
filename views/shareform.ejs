@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/shareform.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
+    <title>Memo Drive - Share Folder</title>
+  </head>
+  <body>
+    <h1 class="share-section-title">Share <%= folder.name %> Folder</h1>
+    <form class="share-form" action="/dashboard/share/<%= folder.id %>" method="post">
+      <label for="duration">Active For: (in days)</label>
+      <select name="duration" id="duration">
+        <option value="1">1</option>
+        <option value="7">7</option>
+        <option value="30">30</option>
+      </select>
+      <button type="submit">Generate share Link</button>
+    </form>
+    <div>
+        <% if(locals.sharedLink) { %>
+            <p class="generated-sharelink">Share Link :  <%= sharedLink %></p>
+        <% } %>
+        <% if(locals.message) { %>
+        <p class="sharing-error">Error: <%= message %></p>
+       <% } %>
+    </div>
+  </body>
+</html>

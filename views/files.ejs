@@ -1,0 +1,22 @@
+
+<div class="files-container">
+  <h1 class="files-section-title"><%= locals.title ? title : "All Files" %> </h1>
+    <% if(locals.files.length != 0) { %>
+      <% files.forEach(file => { %>
+      <div class="file-info-container">
+       <p class="file-name"><strong><%= file.name %></strong></p>
+       <p class="file-date"><%= file.createdAt %></p>
+       <p class="file-folder">In Folder : <%= file.folder.name %></p>
+       <p class="file-size">Size: <%= file.size ? formatBytes(file.size) : 'Unknown' %> </p>
+       <div class="file-links">
+        <a href="/dashboard/files/<%= file.id %>">View Details</a>
+        <a href="/dashboard/delete/file/<%= file.id %>">Delete</a>
+        <a href="/dashboard/update/file/<%= file.id %>">Update</a>
+       </div>
+      </div>
+     <% }) %>
+    <% } else { %>
+     <p>no files uploaded yet ! </p>
+     <a href="/dashboard/upload">Upload new file !</a>
+    <% } %>
+</div>

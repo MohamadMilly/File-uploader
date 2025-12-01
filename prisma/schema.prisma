@@ -1,17 +1,17 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
- // output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
 }
 
 model User {
@@ -20,14 +20,45 @@ model User {
   lastname String
   username String @unique
   password String
-  
+  folders Folder[]
+  files File[]
+  links SharedLink[]
+
   @@map("users")
 }
 
-model Session {
-  id        String   @id
-  sid       String   @unique
-  data      String  
-  expiresAt   DateTime
+model File {
+  id Int @id @default(autoincrement())
+  name String
+  URL String
+  size Float?
+  createdAt DateTime @default(now())
+  user User @relation(fields: [userId],references: [id])
+  userId Int
+  folder Folder @relation(fields: [folderId],references: [id])
+  folderId Int
+
+  @@map("files")
 }
 
+model Folder {
+    id Int @id @default(autoincrement())
+    name String @unique
+    createdAt DateTime @default(now())
+    files File[]
+    user User @relation(fields: [userId],references: [id])
+    userId Int
+    shareLink SharedLink?
+    @@map("folders")
+}
+
+model SharedLink {
+  id Int @id @default(autoincrement())
+  shareId String
+  createdAt DateTime @default(now())
+  duration Int @default(1)
+  user User @relation(fields: [userId],references: [id])
+  userId Int
+  folder Folder? @relation(fields: [folderId],references: [id])
+  folderId Int @unique
+}

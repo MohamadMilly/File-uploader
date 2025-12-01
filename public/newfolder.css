@@ -1,0 +1,78 @@
+html {
+  height: 100%;
+  --title-color: rgb(46, 46, 220);
+  --input-border-color: rgb(174, 167, 167);
+  --submit-button-color: rgb(46, 46, 220);
+  --form-background: rgba(228, 218, 218, 0.25);
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  font-family: "Google Sans Flex", sans-serif;
+  color: rgb(42, 42, 42);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    to bottom right,
+    rgba(134, 134, 240, 0.15),
+    rgba(228, 218, 218, 0.25)
+  );
+  padding: 24px;
+}
+
+.newfolder-section-title {
+  color: var(--title-color);
+  text-align: center;
+  font-size: 28px;
+  margin: 32px 0px;
+}
+
+.newfolder-form {
+  background-color: var(--form-background);
+  padding: 24px 32px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  width: 100%;
+}
+
+.newfolder-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.newfolder-form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 2px solid var(--input-border-color);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.newfolder-form input:focus {
+  border-color: var(--title-color);
+}
+
+.newfolder-form button[type="submit"] {
+  padding: 10px 24px;
+  border-radius: 6px;
+  border: 2px solid var(--submit-button-color);
+  border-bottom: 4px solid var(--submit-button-color);
+  background-color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.newfolder-form button[type="submit"]:hover {
+  background-color: var(--submit-button-color);
+  color: white;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/filedetails.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Memo Drive - File Details</title>
+  </head>
+  <body>
+    <h1 class="filedetails-section-title">File Details</h1>
+    <main class="content-container">
+      <div class="file-info-container">
+        <h2 class="file-name"><%= file.name %></h2>
+        <p class="file-size">
+          Size : <%= file.size ? formatBytes(file.size) : 'Unknown' %>
+        </p>
+        <p class="file-folder">In Folder: <%= file.folder.name %></p>
+        <p class="file-date">Uploaded At : <%= file.createdAt %></p>
+        <a
+          class="file-download-link"
+          href="<%= file.URL %>"
+          download
+          id="download_link"
+          >Download</a
+        >
+      </div>
+    </main>
+  </body>
+</html>
