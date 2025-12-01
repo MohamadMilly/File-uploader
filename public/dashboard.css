@@ -327,6 +327,7 @@ aside > div > h3 {
     background-color: rgb(246, 242, 242);
     backdrop-filter: none;
     z-index: 10;
+    visibility: hidden;
   }
   main {
     grid-template-columns: 1fr;

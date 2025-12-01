@@ -474,7 +474,7 @@ async function createShareLink(duration, shareId, folderId, userId) {
       shareId: shareId,
       user: {
         connect: {
-          id: req.user.id,
+          id: userId,
         },
       },
       folder: {

@@ -117,12 +117,3 @@ main {
     justify-content: center;
   }
 }
-
-@media (min-width: 481px) {
-  nav > ul {
-    display: none;
-  }
-  nav {
-    justify-content: center;
-  }
-}
