@@ -22,14 +22,15 @@ body {
 main {
   display: grid;
   grid-template-columns: 200px 1fr;
-  flex: 1;
+  flex-grow: 1;
 }
 aside {
   grid-column: 1/2;
   background-color: var(--aside-background-color);
-  flex: 1;
+  flex-grow: 1;
   border-right: 5px solid var(--aside-border-color);
-  backdrop-filter: blue(10px);
+  backdrop-filter: blur(10px);
+  position: relative;
 }
 
 aside > div > a {
@@ -38,7 +39,6 @@ aside > div > a {
 
 section {
   grid-column: 2/3;
-  height: 100%;
   padding: 32px;
 }
 
@@ -123,6 +123,8 @@ aside > div > h3 {
   margin-top: 12px;
   display: flex;
   gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .file-links a {
@@ -261,4 +263,78 @@ aside > div > h3 {
 
 .folders-section-container > a:hover {
   background-color: var(--aside-links-background-hover);
+}
+
+.close-button {
+  border: none;
+  background: none;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  right: -5px;
+  display: none;
+}
+
+.open-button {
+  border: none;
+  background: none;
+  padding: 5px;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  display: none;
+}
+
+.slideout-animate {
+  animation: slideout ease-in 0.5s 1;
+  animation-fill-mode: forwards;
+}
+
+.slidein-animate {
+  animation: slidein ease-in 0.5s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideout {
+  from {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  to {
+    transform: translateX(-100%);
+    visibility: hidden;
+  }
+}
+
+@keyframes slidein {
+  from {
+    transform: translateX(-100%);
+    visibility: hidden;
+  }
+  to {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  main > aside {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: rgb(246, 242, 242);
+    backdrop-filter: none;
+    z-index: 10;
+  }
+  main {
+    grid-template-columns: 1fr;
+  }
+  .close-button {
+    display: block;
+  }
+  .open-button {
+    display: block;
+  }
 }

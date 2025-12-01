@@ -108,3 +108,21 @@ main {
   z-index: -10;
   opacity: 0.3;
 }
+
+@media (max-width: 480px) {
+  nav > ul {
+    display: none;
+  }
+  nav {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 481px) {
+  nav > ul {
+    display: none;
+  }
+  nav {
+    justify-content: center;
+  }
+}

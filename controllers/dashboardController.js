@@ -436,6 +436,23 @@ const sharePagePost = async (req, res) => {
     where: { folderId: parseInt(folderId) },
   });
   if (existingLinkData) {
+    const linkCreatedAt = existingLinkData.createdAt;
+    const expireDate = new Date(linkCreatedAt);
+    expireDate.setDate(linkCreatedAt + parseInt(existingLinkData.duration));
+    const isExpired = new Date() < expireDate;
+    if (isExpired) {
+      await prisma.sharedLink.delete({
+        where: {
+          shareId: shareId,
+        },
+      });
+      await createShareLink(duration, shareId, folderId, req.user.id);
+      return res.render("shareform", {
+        sharedLink: sharedLink,
+        folder: folder,
+      });
+    } else {
+    }
     const existingShareUrl = `${base_url}/shared/${existingLinkData.shareId}`;
     return res.render("shareform", {
       sharedLink: existingShareUrl,
@@ -443,24 +460,29 @@ const sharePagePost = async (req, res) => {
       message: "You already have a share link",
     });
   } else {
-    await prisma.sharedLink.create({
-      data: {
-        duration: parseInt(duration),
-        shareId: shareId,
-        user: {
-          connect: {
-            id: req.user.id,
-          },
-        },
-        folder: {
-          connect: { id: parseInt(folderId) },
-        },
-      },
-    });
+    await createShareLink(duration, shareId, folderId, req.user.id);
 
     res.render("shareform", { sharedLink: sharedLink, folder: folder });
   }
 };
+
+// instead of repeating the share link creation code block , i am going to use a utility function
+async function createShareLink(duration, shareId, folderId, userId) {
+  await prisma.sharedLink.create({
+    data: {
+      duration: parseInt(duration),
+      shareId: shareId,
+      user: {
+        connect: {
+          id: req.user.id,
+        },
+      },
+      folder: {
+        connect: { id: parseInt(folderId) },
+      },
+    },
+  });
+}
 
 module.exports = {
   allFilesGet,
