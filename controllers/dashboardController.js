@@ -119,7 +119,7 @@ const newFolderPost = async (req, res, next) => {
     console.error("Unexpected Error: ", error);
     next(error);
   }
-  res.redirect("/dashboard");
+  res.redirect("/dashboard/folders");
 };
 
 // getting all the folder when visiting /dashboard/folders

@@ -25,17 +25,19 @@ const sharedContentGet = async (req, res) => {
       shareId: shareId,
     },
   });
-  if (!shareId) {
+
+  if (!sharedLink) {
     return res.send("Your share link is invalid");
   }
   const linkCreatedAt = sharedLink.createdAt;
   const expireDate = new Date(linkCreatedAt);
-  expireDate.setDate(linkCreatedAt + parseInt(sharedLink.duration));
-  const isExpired = new Date() < expireDate;
+  expireDate.setDate(expireDate.getDate() + parseInt(sharedLink.duration));
+  const isExpired = new Date() > expireDate;
+
   if (isExpired) {
     await prisma.sharedLink.delete({
       where: {
-        shareId: shareId,
+        folderId: sharedLink.folderId,
       },
     });
     return res.send("Your share link has expired");
