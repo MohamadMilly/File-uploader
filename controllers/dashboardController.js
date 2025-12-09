@@ -280,7 +280,7 @@ const deleteFolderPost = async (req, res) => {
     },
   });
 
-  const [deletedFiles, deletedFilesCount, deletedFolder] =
+  const [deletedFiles, deletedFilesCount, deletedShare, deletedFolder] =
     await prisma.$transaction([
       deletedFilesDataPromise,
       deletedFilesCountPromise,
